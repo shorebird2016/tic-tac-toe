@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tttApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Freecodecamp project - Tic Tac Toe</title>
+    <style>
+        body { font-family: "Comic Sans MS"; font-size: 250%; background-image: url(asset/board.jpg);
+            background-repeat: no-repeat; }
+        .dv-btn { margin-left: 350px; font-size: x-large; font-family: "Comic Sans MS"; border-radius: 10px; background-color: aquamarine; }
+        #dv-q0 { position: absolute; top: 80px; left: 60px; }
+        #dv-q1 { position: absolute; top: 80px; left: 292px; }
+        #dv-q2 { position: absolute; top: 80px; left: 530px; }
+        #dv-q3 { position: absolute; top: 330px; left: 60px; }
+        #dv-q4 { position: absolute; top: 330px; left: 292px; }
+        #dv-q5 { position: absolute; top: 330px; left: 530px; }
+        #dv-q6 { position: absolute; top: 580px; left: 60px; }
+        #dv-q7 { position: absolute; top: 580px; left: 290px; }
+        #dv-q8 { position: absolute; top: 580px; left: 510px; }
+        .dv-msg, .dv-msg2 { position: absolute; top: 30%; left: 18%; border: 1px lightgrey solid; border-radius: 20px;
+            background-color: #fff1f3; font-family: "Comic Sans MS"; padding: 0 20px 5px 20px }
+        .dv-btn1 { margin: 0 40px 10px 80px; border-radius: 5px; }
+        .dv-img { position: absolute; top: 20%; left: 15%; }
+    </style>
+</head>
+
+<!-- everything fixed to top/left corner-->
+<body id="bkgnd" ng-controller="tttCtrl as CTRL">
+    <div>
+        <span>Tic Tac Toe</span>
+        <button class="dv-btn" ng-click="CTRL.restartGame()">Start Over</button>
+    </div>
+
+    <!-- overlay 9 graphics buttons -->
+    <img ng-src="asset/{{CTRL.imageName[0]}}"  id="dv-q0" ng-click="CTRL.clickCell(0)">
+    <img ng-src="asset/{{CTRL.imageName[1]}}"  id="dv-q1" ng-click="CTRL.clickCell(1)">
+    <img ng-src="asset/{{CTRL.imageName[2]}}"  id="dv-q2" ng-click="CTRL.clickCell(2)">
+    <img ng-src="asset/{{CTRL.imageName[3]}}"  id="dv-q3" ng-click="CTRL.clickCell(3)">
+    <img ng-src="asset/{{CTRL.imageName[4]}}"  id="dv-q4" ng-click="CTRL.clickCell(4)">
+    <img ng-src="asset/{{CTRL.imageName[5]}}"  id="dv-q5" ng-click="CTRL.clickCell(5)">
+    <img ng-src="asset/{{CTRL.imageName[6]}}"  id="dv-q6" ng-click="CTRL.clickCell(6)">
+    <img ng-src="asset/{{CTRL.imageName[7]}}"  id="dv-q7" ng-click="CTRL.clickCell(7)">
+    <img ng-src="asset/{{CTRL.imageName[8]}}"  id="dv-q8" ng-click="CTRL.clickCell(8)">
+
+
+    <!--{{CTRL.msg}}-->
+    <!-- hidden overlay for game over, you win, I win, player 1 win, player 2 win -->
+    <div class="dv-msg" ng-show="CTRL.dlgTextVisible">
+        <h3>{{CTRL.msg}}</h3>
+        <button class="dv-btn dv-btn1" ng-click="CTRL.setPlayer(1)">&nbsp;1&nbsp;</button>
+        <button class="dv-btn dv-btn1" ng-click="CTRL.setPlayer(2)">&nbsp;2&nbsp;</button>
+    </div>
+    <div class="dv-img" ng-show="CTRL.dlgImgVisible">
+        <img ng-src="asset/{{CTRL.dlgImage}}" width="550" ng-click="CTRL.hideImage()">
+    </div>
+    <div class="dv-msg2" ng-show="CTRL.dlg2Visible">
+        <h3>{{CTRL.msg2}}</h3>
+        <button class="dv-btn dv-btn1" ng-click="CTRL.setSymbol(1)">&nbsp;X&nbsp;</button>
+        <button class="dv-btn dv-btn1" ng-click="CTRL.setSymbol(2)">&nbsp;O&nbsp;</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.3/angular.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
